@@ -1,10 +1,10 @@
 import { Navigation } from 'react-native-navigation';
-import { startTabNavigation } from './src/utils/navigation';
+import { startTabNavigation, defaultStyling } from './src/utils/navigation';
+import screens from './src/utils/screens';
 
-import Counter from './src/screens/Counters';
-
-Navigation.registerComponent('brain.counters', () => Counter);
+screens();
 
 Navigation.events().registerAppLaunchedListener(() => {
   startTabNavigation();
+  defaultStyling();
 });
