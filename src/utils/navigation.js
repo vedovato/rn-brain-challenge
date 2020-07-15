@@ -6,7 +6,7 @@ export const startTabNavigation = async () => {
 
   const TABS = [
     { screen: 'brain.counters', label: 'Counters', icon: icons.flame },
-    { screen: 'brain.counters', label: 'Settings', icon: icons.star },
+    { screen: 'brain.settings', label: 'Settings', icon: icons.star },
   ];
 
   Navigation.setRoot({
@@ -22,6 +22,43 @@ export const startTabNavigation = async () => {
           },
         })),
       },
+    },
+  });
+};
+
+export const defaultStyling = () => {
+  Navigation.setDefaultOptions({
+    statusBar: {
+      backgroundColor: 'blue',
+      style: 'light',
+    },
+
+    layout: {
+      componentBackgroundColor: '#ccc',
+    },
+
+    topBar: {
+      background: { color: 'blue' },
+      title: { color: 'white', alignment: 'center' },
+      noBorder: true, // ios
+      elevation: 0, // android
+    },
+
+    bottomTabs: {
+      backgroundColor: 'green',
+      hideShadow: true, // ios
+      elevation: 0, // android
+    },
+
+    bottomTab: {
+      iconColor: 'red',
+      textColor: 'red',
+      selectedIconColor: 'yellow',
+      selectedTextColor: 'yellow',
+    },
+
+    navigationBar: {
+      backgroundColor: 'purple',
     },
   });
 };
