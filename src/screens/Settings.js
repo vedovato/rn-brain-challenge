@@ -14,7 +14,7 @@ const Settings = () => {
 
   const styles = {
     top: { flex: 1, justifyContent: 'space-between' },
-    bottom: { opacity: selected === null ? 0.3 : 1 },
+    active: { opacity: selected === null ? 0.3 : 1 },
   };
 
   return (
@@ -25,7 +25,7 @@ const Settings = () => {
       </ActionBoxWrapper>
 
       <ActionBoxWrapper
-        style={styles.bottom}
+        style={styles.active}
         label={selected ? 'Selected Counter' : 'No Counter is Selected'}>
         <Button type="INCREMENT" onPress={() => dispatch(increment())} />
         <Button type="DECREMENT" onPress={() => dispatch(decrement())} />
