@@ -1,24 +1,63 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { showToast } from '../utils/navigation';
 
 export const counterSlice = createSlice({
-  name: 'counter',
+  name: 'counters',
+
   initialState: {
-    value: 0,
+    selected: null,
+    counters: [],
   },
+
   reducers: {
+    setSelected: (state, action) => {
+      state.selected = action.payload;
+    },
+
+    createCounter: (state) => {
+      const len = state.counters.length;
+      state.selected = len;
+      state.counters.push({ value: 0 });
+      showToast({ type: 'add' });
+    },
+
+    deleteCounter: (state) => {
+      if (state.selected !== null) {
+        state.selected = null;
+        state.counters.splice(state.selected, 1);
+        showToast({ type: 'delete' });
+      }
+    },
+
     increment: (state) => {
-      state.value += 1;
+      const match = state.counters[state.selected];
+      match ? (match.value += 1) : false;
+      showToast({ type: 'increment' });
     },
 
     decrement: (state) => {
-      state.value -= 1;
+      const match = state.counters[state.selected];
+      if (match && match.value > 0) {
+        showToast({ type: 'decrement' });
+        match.value -= 1;
+      }
     },
 
-    incrementByAmount: (state, action) => {
-      state.value += action.payload;
+    reset: (state) => {
+      const match = state.counters[state.selected];
+      match ? (match.value = 0) : false;
+      showToast({ type: 'reset' });
     },
   },
 });
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+export const {
+  setSelected,
+  createCounter,
+  deleteCounter,
+  increment,
+  decrement,
+  reset,
+} = counterSlice.actions;
+
 export default counterSlice.reducer;

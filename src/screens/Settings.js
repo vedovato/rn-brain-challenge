@@ -1,15 +1,38 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { SafeAreaView, Text } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
+import { SafeAreaView } from 'react-native';
+
+import ActionBoxWrapper from '../components/ActionBoxWrapper';
+import Button from '../components/Button';
+
+import { increment, decrement, reset } from '../redux/slice';
+import { createCounter, deleteCounter } from '../redux/slice';
 
 const Settings = () => {
-  const { value } = useSelector((state) => state.counter);
+  const { selected } = useSelector((state) => state.counters);
+  const dispatch = useDispatch();
+
+  const styles = {
+    top: { flex: 1, justifyContent: 'space-between' },
+    bottom: { opacity: selected === null ? 0.3 : 1 },
+  };
 
   return (
-    <SafeAreaView>
-      <Text style={{ color: 'red', fontSize: 80 }}>{value}</Text>
+    <SafeAreaView style={styles.top}>
+      <ActionBoxWrapper label="Counters">
+        <Button type="ADD" onPress={() => dispatch(createCounter())} />
+        <Button type="REMOVE" onPress={() => dispatch(deleteCounter())} />
+      </ActionBoxWrapper>
+
+      <ActionBoxWrapper
+        style={styles.bottom}
+        label={selected ? 'Selected Counter' : 'No Counter is Selected'}>
+        <Button type="INCREMENT" onPress={() => dispatch(increment())} />
+        <Button type="DECREMENT" onPress={() => dispatch(decrement())} />
+        <Button type="RESET" onPress={() => dispatch(reset())} />
+      </ActionBoxWrapper>
     </SafeAreaView>
   );
 };
 
-export default Settings;
+export default React.memo(Settings);

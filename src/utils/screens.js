@@ -5,10 +5,13 @@ import store from '../redux/store';
 
 import Counters from '../screens/Counters';
 import Settings from '../screens/Settings';
+import Toast from '../components/Toast';
 
 const SCREENS = [
   { name: 'brain.counters', Component: Counters },
   { name: 'brain.settings', Component: Settings },
+
+  { name: 'component.toast', Component: Toast },
 ];
 
 const screens = () => {
@@ -17,7 +20,7 @@ const screens = () => {
       <Provider store={store}>
         <Component {...props} />
       </Provider>
-    )),
+    ))
   );
 };
 

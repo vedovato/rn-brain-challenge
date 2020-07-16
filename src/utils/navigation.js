@@ -1,12 +1,13 @@
 import { Navigation } from 'react-native-navigation';
 import prepareIcons from './icons';
+import { colors } from './theme';
 
 export const startTabNavigation = async () => {
   const icons = await prepareIcons();
 
   const TABS = [
-    { screen: 'brain.counters', label: 'Counters', icon: icons.flame },
-    { screen: 'brain.settings', label: 'Settings', icon: icons.star },
+    { screen: 'brain.counters', label: 'Counters', icon: icons.home },
+    { screen: 'brain.settings', label: 'Settings', icon: icons.cog },
   ];
 
   Navigation.setRoot({
@@ -26,39 +27,54 @@ export const startTabNavigation = async () => {
   });
 };
 
+export const showToast = ({ type, delay }) => {
+  const options = {
+    layout: { componentBackgroundColor: 'transparent' },
+    overlay: { interceptTouchOutside: false },
+  };
+
+  Navigation.showOverlay({
+    component: {
+      passProps: { type, delay },
+      name: 'component.toast',
+      options,
+    },
+  });
+};
+
 export const defaultStyling = () => {
   Navigation.setDefaultOptions({
     statusBar: {
-      backgroundColor: 'blue',
+      backgroundColor: colors.greyish,
       style: 'light',
     },
 
     layout: {
-      componentBackgroundColor: '#ccc',
+      componentBackgroundColor: colors.light,
     },
 
     topBar: {
-      background: { color: 'blue' },
+      background: { color: colors.greyish },
       title: { color: 'white', alignment: 'center' },
       noBorder: true, // ios
       elevation: 0, // android
     },
 
     bottomTabs: {
-      backgroundColor: 'green',
+      backgroundColor: 'white',
       hideShadow: true, // ios
       elevation: 0, // android
     },
 
     bottomTab: {
-      iconColor: 'red',
-      textColor: 'red',
-      selectedIconColor: 'yellow',
-      selectedTextColor: 'yellow',
+      iconColor: colors.grey,
+      textColor: colors.grey,
+      selectedIconColor: colors.greyish,
+      selectedTextColor: colors.greyish,
     },
 
     navigationBar: {
-      backgroundColor: 'purple',
+      backgroundColor: 'white',
     },
   });
 };
