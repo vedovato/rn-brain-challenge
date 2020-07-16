@@ -300,6 +300,8 @@ PODS:
     - React
     - React-RCTImage
     - React-RCTText
+  - RNVectorIcons (7.0.0):
+    - React
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -352,6 +354,7 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - ReactNativeNavigation (from `../node_modules/react-native-navigation`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -422,6 +425,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   ReactNativeNavigation:
     :path: "../node_modules/react-native-navigation"
+  RNVectorIcons:
+    :path: "../node_modules/react-native-vector-icons"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -463,6 +468,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: f3a9123c244f35c40d3c9f3ec3f0b9e5717bb292
   ReactCommon: 2905859f84a94a381bb0d8dd3921ccb1a0047cb8
   ReactNativeNavigation: 9b0afb0e38d6b97eb23aab3bb410826ebc559bec
+  RNVectorIcons: da6fe858f5a65d7bbc3379540a889b0b12aa5976
   Yoga: d5bd05a2b6b94c52323745c2c2b64557c8c66f64
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
