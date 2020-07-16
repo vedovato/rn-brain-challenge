@@ -34,7 +34,8 @@
 - Hooks;
 - Redux + Redux Toolkit;
 - Feebacks de interação;
-- Ícones e botões.
+- Ícones e botões;
+- Compatível com Android e iOS
 
 ## Requisito não atendidos 😭
 - Testes.
