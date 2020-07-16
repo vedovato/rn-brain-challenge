@@ -14,13 +14,12 @@ const DICT = {
   RESET: { color: colors.goldish, icon: 'md-refresh-circle-outline' },
 };
 
-const Button = ({ type, onPress, disabled = false }) => {
+const Button = ({ type, onPress }) => {
   const [pressed, setPress] = useState(false);
   return (
     <ButtonWrapper
       color={DICT[type].color}
       activeOpacity={0.8}
-      disabled={disabled}
       onPress={onPress}
       onPressIn={() => setPress(true)}
       onPressOut={() => setPress(false)}
@@ -42,14 +41,13 @@ const ButtonWrapper = styled(TouchableOpacity)`
 
 const Icon = styled(Ionicon)`
   font-size: 50px;
-  text-align: center;
+  text-align: right;
   padding: 5px 8px 3px;
-  background: ${(props) => props.color};
-  justify-content: center;
   color: white;
   border: 2px solid;
   border-radius: 5px;
   border-color: ${(props) => tinycolor(props.color).lighten(15).toString()};
+  background: ${(props) => props.color};
 `;
 
 export default React.memo(Button);
